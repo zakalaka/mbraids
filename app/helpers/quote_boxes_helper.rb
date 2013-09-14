@@ -1,0 +1,2 @@
+module QuoteBoxesHelper
+end

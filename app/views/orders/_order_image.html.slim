@@ -1,0 +1,9 @@
+= form_for @order_image, :url => attach_image_path, :builder => StandardFormBuilder do |f|
+  = f.hidden_field :order_id, :value => @order.id
+  = f.file_field :image
+  /= f.collection_select(:user_id, Account.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
+  = show_simple_captcha({:code_type => "numeric"})
+  - cache do
+    .actions
+      = f.submit t('.save')
+      = link_to(t('.nothing'),root_path) if permitted_to? :edit, @order_image

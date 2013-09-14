@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Apt date:
+  = @appointment.apt_date
+p
+  strong Apt time:
+  = @appointment.apt_time
+p
+  strong Duration:
+  = @appointment.duration
+p
+  strong Location:
+  = @appointment.location
+p
+  strong Description:
+  = @appointment.description
+p
+  strong Completed flag:
+  = @appointment.completed_flag
+p
+  strong Problem flag:
+  = @appointment.problem_flag
+
+= link_to 'Edit', edit_appointment_path(@appointment)
+'|
+= link_to 'Back', appointments_path

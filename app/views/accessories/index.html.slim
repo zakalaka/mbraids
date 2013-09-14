@@ -1,0 +1,8 @@
+h2=t('.all_accessories')
+table.item_list
+  tr
+    th name
+    th image
+    th action
+  =render :partial => 'accessory', :collection => @accessories
+=link_to(t('.new_accessory'),new_category_accessory_path)

@@ -1,0 +1,29 @@
+h2=t('.sample_quote_box')
+-unless @hairstyles.empty?
+  h3=t('.hairstyles')
+
+  -@hairstyles.each do |hs, li|
+    div
+      span=hs.name
+      span= button_to(t('.remove'),quote_box_line_item_path(id: li), {:confirm => t('.confirm_deletion'), :method => :delete})
+-unless @accessories.empty?
+  h3=t('.accessories')
+  -@accessories.each do |ac, li|
+    div
+      span=ac.name
+      span= button_to(t('.remove'),quote_box_line_item_path(id: li), {:confirm => t('.confirm_deletion'), :method => :delete})
+-unless @appointments.empty?
+  h3=t('.appointments')
+  -@appointments.each do |ap,li|
+    div
+      span=ap.description
+      span=ap.apt_date
+      span=ap.apt_time
+      span= button_to(t('.remove'),quote_box_line_item_path(id: li), {:confirm => t('.confirm_deletion'), :method => :delete})
+
+-unless @quote_box
+  p=t('.emtpy_message')
+-if @quote_box
+  =link_to(t('.destroy'), quote_box_path, :confirm => t('.confirm_deletion'), :method => :delete)
+  =button_to(t('.confirm_order'), orders_path, {:confirm => t('.confirm_order_msg')})
+

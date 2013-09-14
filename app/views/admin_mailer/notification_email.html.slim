@@ -1,0 +1,7 @@
+h1 This is a sample notification
+p The following user has just registered:
+p= @user.email
+/the following is the way to generate a link:
+  user_url(@user, :host => "example.com")
+  or user_url(@user, :only_path => false) if config.action_mailer.default_url_options is specified
+

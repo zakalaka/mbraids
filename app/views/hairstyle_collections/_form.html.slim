@@ -1,0 +1,10 @@
+= form_for @hairstyle_collection, :builder => StandardFormBuilder do |f|
+  = f.text_field :name
+  = f.text_area :description
+  = f.select(:collection_type, [%w(Ladies L),%w(Girls G)])
+  /= f.collection_select(:user_id, HairstyleCollection.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
+  - cache do
+    .actions
+      = f.submit t('common.form.save')
+      = link_to(t('common.form.cancel'),:back)
+

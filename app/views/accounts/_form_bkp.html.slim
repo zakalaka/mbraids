@@ -1,0 +1,36 @@
+= form_for @account do |f|
+  -if @account.errors.size > 0
+    .message
+      .ui-widget
+        div(class="ui-state-error ui-corner-all" style='padding: 0 .7em;')
+          p
+            span(class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;')
+            |
+              there were some errors
+  -if @account.errors.size > 0
+    .message
+      .ui-widget
+        div(class="ui-state-highlight ui-corner-all" style='padding: 0 .7em;')
+          p
+            span(class='ui-icon ui-icon-info' style='float: left; margin-right: .3em;')
+            -@account.errors.each do |field, message|
+              =field.to_s.concat(" #{message}").html_safe
+              br
+  .field
+    = f.label :name, :class => "mb-ui-form-text-label"
+    = f.text_field :name, :class => "mb-ui-form-text-padding ui-widget ui-state-default ui-corner-all"
+    = show_first_error(@account, :name) if @account.errors.include?(:name)
+  .field
+    = f.label :account_type, :class => "mb-ui-form-text-label"
+    = f.text_field :account_type, :class => "mb-ui-form-text-padding ui-widget ui-state-default ui-corner-all", :size => 8, :maxlength => 10
+  .field
+    = f.label :balance, :class => "mb-ui-form-text-label"
+    = f.text_field :balance, :class => "mb-ui-form-text-padding ui-widget ui-state-default ui-corner-all"
+    = show_first_error(@account, :balance) if @account.errors.include?(:balance)
+  .field
+    = f.label :balance, :class => "mb-ui-form-text-label"
+    = f.text_area :balance, :class => "ui-widget ui-state-default ui-corner-all mb-ui-form-text-padding", :size => "25x8"
+  .field
+    = f.check_box :frozen_flag, :id => "check"
+    label(for='check') Remember me
+  .actions = f.submit 'Save'

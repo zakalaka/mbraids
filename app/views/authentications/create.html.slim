@@ -1,0 +1,16 @@
+h1 Listing authentications
+
+table
+  tr
+    th Provider
+    th Uid
+    th User_id
+
+  - current_user.authentications.each do |auth|
+    tr
+      td = auth.provider
+      td = auth.uid
+      td = auth.user_id
+br
+
+= link_to "root", root_path

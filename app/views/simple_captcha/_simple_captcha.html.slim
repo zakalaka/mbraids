@@ -1,0 +1,7 @@
+.simple_captcha
+  = simple_captcha_options[:image]
+  .field
+    label= simple_captcha_options[:label]
+    = simple_captcha_options[:field]
+    -if flash[:captcha_error]
+      p.mb-ui-form-field-error = t(flash[:captcha_error])

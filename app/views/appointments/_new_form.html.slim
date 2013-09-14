@@ -1,0 +1,30 @@
+= form_for @appointment do |f|
+  - if @appointment.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@appointment.errors.count, "error")} prohibited this appointment from being saved:"
+      ul
+        - @appointment.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :apt_date
+    = f.date_select :apt_date
+  .field
+    = f.label :apt_time
+    = f.time_select :apt_time
+  .field
+    = f.label :duration
+    = f.select(:duration, [['30 min',30],['60 min',60]])
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :completed_flag
+    = f.check_box :completed_flag
+  .field
+    = f.label :problem_flag
+    = f.check_box :problem_flag
+  .actions = f.submit 'Save'

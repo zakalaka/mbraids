@@ -1,0 +1,19 @@
+h2 Yor order
+p
+  strong User:
+  = @order.user_id
+p
+  strong Complete flag:
+  = @order.complete_flag
+p
+  strong Problem flag:
+  = @order.problem_flag
+p
+  strong Comments:
+  = @order.comments
+- unless @order_image.new_record?
+  =image_tag("#{@order_image.image}")
+- else
+  p = render partial: 'order_image'
+
+= link_to 'Back', orders_path

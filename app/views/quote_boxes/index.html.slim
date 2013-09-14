@@ -1,0 +1,19 @@
+h1 Listing quote_boxes
+
+table
+  tr
+    th Appointment
+    th
+    th
+    th
+
+  - @quote_boxes.each do |quote_box|
+    tr
+      td = quote_box.appointment_id
+      td = link_to 'Show', quote_box
+      td = link_to 'Edit', edit_quote_box_path(quote_box)
+      td = link_to 'Destroy', quote_box, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Quote box', new_quote_box_path

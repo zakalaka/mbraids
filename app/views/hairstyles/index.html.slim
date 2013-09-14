@@ -1,0 +1,9 @@
+h2=t('.all_hairstyles')
+table.item_list
+  tr
+    th name
+    th image
+    th action
+  =render :partial => 'hairstyle', :collection => @hairstyles
+=link_to(t('.new_hairstyle'),new_hairstyle_collection_hairstyle_path)
+

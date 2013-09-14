@@ -1,0 +1,310 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+*= require jquery-ui-1.9.2.custom.min
+* {
+    margin: 0;
+    padding: 0;
+}
+body, p, ol, ul, td {
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+div {
+    /*outline: 1px solid #7fffd4;*/
+}
+#wrap {
+    /*background: #cccccc;*/
+    width: 940px;
+    padding: 10px;
+    margin: 0 auto;
+}
+h1, ul {
+    padding: 0;
+    margin: 0;
+}
+/* helper class to clear any floating of the previous elements */
+.clear {
+    clear: both;
+}
+#header {
+    position: relative;
+    margin-bottom: 10px;
+}
+#menu ul {
+    list-style: none;
+    /* this is needed so that margins from it can be specified easily*/
+    height: 30px;
+    border-bottom: 1px solid #000;
+}
+#menu ul li {
+    float: left;
+    background: #fff;
+}
+#menu ul li a {
+    /*this means that a wasn't displayed as a block by default, we making it a block so we can assign height and width to it :) */
+    display: block;
+    color: #000;
+    text-decoration: none;
+    padding: 0 20px;
+    /* this is so that parent ul can be set to the same height */
+    line-height: 30px;
+    border-bottom: 1px solid #000;
+}
+#menu ul li a:hover, #menu ul li a.selected {
+    background: #000;
+    color: #fff;
+}
+
+#menu ul li ul li {
+    float:none;
+}
+#menu ul li ul {
+    position: absolute;
+    display: none;
+}
+#menu ul li:hover ul {
+    display: block;
+}
+#menu ul li:hover > a {
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+
+
+#content {
+    width: 680px;
+    float: left;
+    padding: 10px;
+    border-right: 1px solid #aaa;
+    min-height: 200px;
+}
+
+#side {
+    width: 219px;
+    float: right;
+    padding: 10px;
+}
+#content, #side {
+    min-height: 100px;
+}
+#footer {
+    padding: 10px;
+    background: #fff;
+    color: #cccccc;
+    border-top: 1px solid #000;
+}
+p#authorization {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/*body {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+div.field, div.actions, div.message, div#radio {
+    border: 0px solid #000;
+    margin: 0 0 1em 0;
+}
+.account_form {
+    width: 25em;
+    border: 1px solid #aaa;
+    padding: 10px;
+}
+form {
+    border: 0px solid #dc143c;
+}
+form input,textarea {
+    max-width: 95%;
+}
+form textarea {
+    height: 5em;
+}
+
+/* this might be not needed here */
+.debug_dump {
+    clear: both;
+}
+.mb-ui-form-text-padding {
+    padding: 0.4em;
+}
+.mb-ui-form-text-label {
+    position: absolute;
+    padding: 0.6em;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 0.80em;
+    color: #654B24;
+    text-transform: uppercase;
+    z-index: 99;
+}
+.mb-ui-form-field-error {
+    margin: 0;
+    border: solid 0 #fff;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 0.90em;
+    color: #CD0A0A;
+}
+textarea.error, input.error {
+    border: 1px solid #CD0A0A;
+}
+input[type=file]{
+    margin-bottom: 1em;
+}
+.simple_captcha label {
+    position: absolute;
+    padding: 0.6em;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 0.80em;
+    color: #654B24;
+    text-transform: uppercase;
+}
+.simple_captcha input {
+    padding: 0.4em;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    background: url("images/ui-bg_fine-grain_10_f8f7f6_60x60.png") repeat scroll 50% 50% #F8F7F6;
+    border: 1px solid #CBC7BD;
+    color: #654B24;
+    font-weight: bold;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+}
+.simple_captcha img {
+    margin: 0;
+    /*padding: 0.8em;*/
+    border: 0px solid #CBC7BD;
+    /*border-bottom-right-radius: 6px;*/
+    /*border-bottom-left-radius: 6px;*/
+    /*border-top-right-radius: 6px;*/
+    /*border-top-left-radius: 6px;*/
+}
+.ui-combobox {
+    position: relative;
+    display: inline-block;
+}
+.ui-combobox-input {
+    margin: 0;
+    padding: 0.3em;
+}
+.debug_dump {
+    color:#999;
+}
+.item_list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid #a96050;*/
+    border-collapse: collapse;
+}
+.item_list tr {
+}
+.item_list td, th {
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #dc143c;
+}
+
+
+/*
+custom starts here
+*/
+/*
+body {
+    color: #808080;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.2em;
+}
+input[type ="text"] {
+    height: 2em;
+    border: 2px solid #888;
+    padding-left: 10em;
+    padding-right: 1em;
+    font-family: Verdana,Arial,sans-serif;
+    vertical-align: middle;
+    margin: 0;
+}
+textarea {
+    border: 2px solid #888;
+    padding: 2em 1em 1em 1em;
+    font-family: Verdana,Arial,sans-serif;
+    margin: 0;
+}
+input[type ="text"]:focus {
+    border: 2px solid #4a44cd;
+}
+input.error, textarea.error {
+    border: 2px solid #DD5050;
+}
+*/
+/*label {*//*
+
+    */
+/*color: #4D4D4D;*//*
+
+    */
+/*cursor: pointer;*//*
+
+    */
+/*font-size: 10px;*//*
+
+    */
+/*font-family: Verdana, Arial, sans-serif;*//*
+
+    */
+/*padding: 12px;*//*
+
+    */
+/*position: absolute;*//*
+
+    */
+/*text-transform: uppercase;*//*
+
+    */
+/*width: 12em;*//*
+
+    */
+/*z-index: 1;*//*
+
+*/
+/*}*//*
+
+label {
+    color: #4D4D4D;
+    cursor: text;
+    font-size: 10px;
+    margin-left: 7px;
+    margin-top: 6px;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    z-index: 1;
+}
+p.error {
+    color: #DD5050;
+    margin: 0;
+    padding: 0;
+}
+.field span {
+    text-transform: uppercase;
+}
+*/

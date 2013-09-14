@@ -1,0 +1,8 @@
+= form_tag(quote_box_line_items_path) do
+  = label_tag(:appointment_to_book)
+  = select_tag(:appointment_id, options_for_select(@appointments), :include_blank => true, :id => 'combobox')
+  - cache do
+    .actions
+      = submit_tag t('.book')
+      /=button_to(t('.add_to_quote_box'), line_items_path(appointment_id: app))
+      = link_to(t('.new appointment'),new_appointment_path) if permitted_to? :create, @appointment

@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Quote box:
+  = @line_item.quote_box_id
+p
+  strong Quotable type:
+  = @line_item.quotable_type
+
+= link_to 'Edit', edit_line_item_path(@line_item)
+'|
+= link_to 'Back', line_items_path

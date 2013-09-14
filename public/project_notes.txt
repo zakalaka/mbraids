@@ -1,0 +1,18 @@
+jan 20:
+ - think/design how to use admin/ portion of the site
+   I think it is better not to do it, just control everything with authorization (MVC level)
+ + form error handling. Clean-up top messages. Research/finalize
+   flash[?] message conventions
+   + researched this.
+     Will use: notice, error.
+              f_notice,f_error (f for form errors)
+ + email configuration/how to work with email
+
+
+
+ march 11:
+   - did a scaffolding on categories for accessories, just to pick-up correct syntax
+
+
+aug. 3:
+some cart gem: try https://github.com/crowdint/acts_as_shopping_cart T

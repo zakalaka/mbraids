@@ -1,0 +1,49 @@
+Remove jquery styling etc
+
+
+opacity:.75;
+background:#000;
+background:rgba(0,0,0,.75)
+width:<calculate width>
+
+
+
++textarea - shouldn't have cols/rows
+use width, height instead
+font:inherit
+
++textfield - also use CSS instead
+
+button - generally ok to 3x top padding on side
+
+--
+
+for the menu:
+use unordered list, also make float:none;
+
+
+#nav li a {
+display:block
+padding: 5px 10px;
+color:#000;
+text-decor:none
+border-bottom 1 solid #ccc
+}
+
+ul#nav li a:hover {
+background:#aaa;
+}
+
+ul#nav li ul li {
+float:none;
+}
+
+ul#nav li ul {
+position:absolute;
+display:none
+}
+
+ul#nav li:hover {
+display:block
+}
+

@@ -1,0 +1,20 @@
+= form_for @category, {class: "form-horizontal"} do |f|
+  - if @category.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+      ul
+        - @category.errors.full_messages.each do |message|
+          li = message
+  fieldset
+    legend=t('.new_category')
+    .control-group
+      label.control-label(for="inputName")=t('common.form.name')
+      .controls
+        = f.text_field :name, {placeholder: t("common.form.name"), class: "span2"}
+    .control-group
+      label.control-label(for="inputDescription")=t('common.form.description')
+      .controls
+        = f.text_field :name, {placeholder: t("common.form.description"), class: "span2"}
+    .form-actions
+      ='f.submit t('common.form.save'), {class: "btn btn-primary"}
+      =button_to(t('common.form.cancel'), :back, {class: "btn", form_class: "form-inline"})

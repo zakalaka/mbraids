@@ -1,0 +1,17 @@
+= form_for @account, :builder => StandardFormBuilder do |f|
+  = f.text_field :name
+  = f.text_field :account_type
+  = f.password_field :account_type
+  = f.text_area :balance
+  #radio
+    = f.radio_button :frozen_flag, true, :text => "remember me"
+    = f.radio_button :frozen_flag, false, :text => "don't"
+  = f.check_box :frozen_flag, :label => 'remember me'
+  = f.file_field :balance
+  /= f.collection_select(:user_id, Account.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
+  = show_simple_captcha({:code_type => "numeric"})
+  - cache do
+    .actions
+      = f.submit t('.save')
+      = link_to(t('.nothing'),root_path) if permitted_to? :edit, @account
+

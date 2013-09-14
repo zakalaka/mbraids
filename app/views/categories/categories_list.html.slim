@@ -1,0 +1,9 @@
+h2
+  = t("this is a categories list")
+table.item_list
+  tr
+    th name
+    th description
+    th action
+  =render :partial => 'category', :collection => @categories
+=link_to(t('.new_category'),new_category_path)

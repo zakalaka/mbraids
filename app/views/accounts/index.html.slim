@@ -1,0 +1,35 @@
+div#left_panel
+  h1 Listing real accounts
+  - @accounts.each do |account|
+    div
+      span = account.name
+      span
+        = text_field_tag account.name.underscore, account.balance
+      span = link_to_if(permitted_to?(:edit, account), 'Edit', edit_account_path(account))
+      span = link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete
+    br
+  p= @total
+  - if (@total - @v_total) > 0
+    p
+      | Undistributed:
+      = @total - @v_total
+  = render :partial => 'distribute_form', :locals => {:distr_method => 'PR', :distr_balance => @total - @v_total}
+  - if permitted_to? :create, Account.new
+    = link_to 'New r.Account', new_account_path
+div#right_panel
+  h1 Listing virtual accounts
+  - @v_accounts.each do |account|
+    div
+      span = account.name
+      span
+        = text_field_tag account.name.underscore, account.balance
+      span = link_to_if(permitted_to?(:edit, account), 'Edit', edit_account_path(account))
+      span = link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete
+    br
+  p= @v_total
+  - if (@v_total - @total) > 0
+      p
+        | Overdistributed:
+        = @v_total- @total
+  - if permitted_to? :create, Account.new
+    = link_to 'New v.Account', new_account_path

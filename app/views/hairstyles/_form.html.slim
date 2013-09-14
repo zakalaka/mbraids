@@ -1,0 +1,12 @@
+= form_for([@hairstyle_collection, @hairstyle], :builder => StandardFormBuilder) do |f|
+  = f.text_field :name
+  = f.text_area :description
+  = f.text_field :price
+  = f.check_box :displayable_flag, :label => 'display'
+  = f.file_field :image
+  /= f.collection_select(:user_id, HairstyleCollection.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
+  - cache do
+    .actions
+      = f.submit t('common.form.save')
+      = link_to(t('common.form.cancel'),:back)
+

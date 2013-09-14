@@ -1,0 +1,45 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+# app/views/home/index.html.erb
+#<%=t 'greet_username', :user => "Bill", :message => "Goodbye" %>
+
+# config/locales/en.yml
+#en:
+#  greet_username: "%{message}, %{user}!"
+
+en:
+  layouts:
+    application:
+      title: "application template"
+      signed_in_as: "currently signed in as %{user}"
+      sign_in: "sign in"
+      sign_up: "sign up"
+      sign_out: "sign out"
+      or: "or"
+
+  accounts:
+    form:
+      save: "Save!"
+  quote_boxes:
+      show:
+        confirm_deletion: "Are you sure you want to delete?"
+        destroy: "remove all items"
+        confirm_order: "order"
+        confirm_order_msg: "you want to order?"
+
+  simple_captcha:
+    label: "enter text above"
+    message:
+      default: "entry didn't match verification image text"
+
+#one of the conventions (built-in mechanisms for translation):
+  helpers:
+    label:
+      account:
+        name: "account name"
+  editing_account: "Edit account"
+
+  declarative_authorization:
+    permission_denied: "You are not authorized to perform this action"
+

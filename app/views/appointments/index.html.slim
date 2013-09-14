@@ -1,0 +1,19 @@
+h2= t('.new appointment')
+.account_form
+  == render 'form_wrapper'
+
+
+
+h3 slim testing
+h2 another header
+- text_var = "hehehe"
+p
+  ' This is a text
+                  more
+      text #{text_var}
+        here
+
+p
+  ' This is another text
+  =render(text: "hehe", inline: true)
+  /'#{@request_obj.inspect}
