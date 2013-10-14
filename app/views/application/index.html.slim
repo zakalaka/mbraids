@@ -1,0 +1,20 @@
+#myCarousel(class="carousel slide")
+  .carousel-inner
+    .item(class="active")
+
+      =image_tag("carousel_bkgrnd.gif", {alt: "", size: "1500x550"})
+      /=image_tag("snow_bkgrnd.jpg", {alt: "", size: "1500x550"})
+      .container
+        .carousel-caption
+          h1 example
+          p.lead lalalala
+    .item
+      =image_tag("snow_bkgrnd.jpg", {alt: "", size: "1500x550"})
+      .container
+        .carousel-caption
+          h1 example 2
+          p.lead lalalala
+  a(class="left carousel-control" data-slide="prev" href="#myCarousel")
+    | ‹
+  a(class="right carousel-control" data-slide="next" href="#myCarousel")
+    | ›

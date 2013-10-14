@@ -1,12 +1,39 @@
-= form_for([@category, @accessory], :builder => StandardFormBuilder) do |f|
-  = f.text_field :name
-  = f.text_area :description
-  = f.text_field :price
-  = f.check_box :displayable_flag, :label => 'display'
-  = f.file_field :image
-  /= f.collection_select(:user_id, HairstyleCollection.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
-  - cache do
-    .actions
-      = f.submit t('common.form.save')
-      = link_to(t('common.form.cancel'),:back)
+= form_for [@category, @accessory], html: {class: "form-horizontal"} do |f|
+  fieldset
 
+    legend =t("." + "#{action_name}" + "_accessory")
+    =render(partial: 'show_error_message', locals: {obj: @accessory})
+    div.control-group(class="#{field_has_error?(@accessory, :name) ? "error" : ""}")
+      =f.label :name, t('common.form.name'), class: "control-label"
+      .controls
+        = f.text_field :name, {placeholder: t("common.form.name"), class: "text_field input-medium"}
+        - if field_has_error?(@accessory, :name)
+          span.help-inline=get_field_error(@accessory, :name)
+    div.control-group(class="#{field_has_error?(@accessory, :description) ? "error" : ""}")
+      =f.label :description, t('common.form.description'), class: "control-label"
+      .controls
+        = f.text_field :description, {placeholder: t("common.form.description"), class: "text_field input-medium"}
+        - if field_has_error?(@accessory, :description)
+          span.help-inline=get_field_error(@accessory, :description)
+    div.control-group(class="#{field_has_error?(@accessory, :price) ? "error" : ""}")
+      =f.label :price, t('common.form.price'), class: "control-label"
+      .controls
+        .input-prepend
+          span.add-on $
+          = f.text_field :price, {placeholder: t("common.form.price"), class: "span2 text_field input-small"}
+        - if field_has_error?(@accessory, :price)
+          span.help-inline=get_field_error(@accessory, :price)
+    div.control-group(class="#{field_has_error?(@accessory, :displayable_flag) ? "error" : ""}")
+      =f.label :displayable_flag, t('common.form.displayable_flag'), class: "control-label"
+      .controls
+        .make-switch(tabindex="0")
+          = f.check_box :displayable_flag
+    div.control-group(class="#{field_has_error?(@accessory, :image) ? "error" : ""}")
+      =f.label :image, t('common.form.image'), class: "control-label"
+      .controls
+        = f.file_field :image
+        - if field_has_error?(@accessory, :image)
+          span.help-inline=get_field_error(@accessory, :image)
+    .form-actions
+      ='f.submit t('common.form.save'), {class: "btn btn-primary"}
+      =link_to(t('common.form.cancel'), :back, {class: "btn"})

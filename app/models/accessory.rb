@@ -6,5 +6,6 @@ class Accessory < ActiveRecord::Base
   attr_accessible :image, :price, :displayable_flag, :name, :description
 
   before_destroy :ensure_not_referenced
+  validates_presence_of :name
   private :ensure_not_referenced
 end

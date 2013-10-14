@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #layout("carousel", only: "index")
   #TODO: captcha
   include SimpleCaptcha::ControllerHelpers
   protect_from_forgery
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
     #@test_var = test_display
     @c_user = current_user
     #logger.debug(@c_user.inspect)
+    render layout: "carousel"
   end
 
   protected
@@ -43,9 +45,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
   def get_random_suffix
     (0...5).map{ ('a'..'z').to_a[rand(26)] }.join
   end
+
   def set_image_filename(orig_filename)
     orig_filename.split('.')[0] + "_#{get_random_suffix}." + orig_filename.split('.')[1]
   end

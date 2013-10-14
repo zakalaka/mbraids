@@ -9,6 +9,23 @@
 #  greet_username: "%{message}, %{user}!"
 
 en:
+  common:
+    btn:
+      destroy: "delete"
+      edit: "edit"
+    form:
+      name: "name"
+      description: "description"
+      save: "Save"
+      cancel: "Cancel"
+      image: "image"
+      displayable_flag: "show?"
+      price: "price"
+      book: "book"
+      currency_symbol: "$"
+    messages:
+      hairstyle.line_items_present: "There are some line items associated with this hairstyle"
+
   layouts:
     application:
       title: "application template"

@@ -22,8 +22,43 @@ h2=t('.sample_quote_box')
       span= button_to(t('.remove'),quote_box_line_item_path(id: li), {:confirm => t('.confirm_deletion'), :method => :delete})
 
 -unless @quote_box
+  .row
+    .offset2
+    - @accessories_2.each do |acc|
+      .span1
+        =link_to(image_tag(acc.image, {class: "img-polaroid"}), accessory_path(acc))
+  =will_paginate(@accessories_2, {class: "pagination pagination-right", renderer: BootstrapPagination::Rails})
+  /ul
+  /  li=link_to("&laquo;".html_safe, root_path)
+  /  li=link_to("1", root_path)
+  /  li=link_to("2", root_path)
+  /  li=link_to("3", root_path)
+  /  li=link_to("4", root_path)
+  /  li=link_to("&raquo;".html_safe, root_path)
+
+
   p=t('.emtpy_message')
 -if @quote_box
   =link_to(t('.destroy'), quote_box_path, :confirm => t('.confirm_deletion'), :method => :delete)
   =button_to(t('.confirm_order'), orders_path, {:confirm => t('.confirm_order_msg')})
 
+
+.page-header
+  h2=t('.quote_box')
+  small
+    =t('.sub_header')
+    =render partial: "show_info_message"
+-unless @hairstyles.empty?
+  h3=t('.hairstyles')
+  table.table(class="table-striped")
+    thead
+      tr
+        th=t('common.table.name')
+        th=t('common.table.image')
+        th=t('common.table.price')
+        th=t('common.table.description')
+        th=t('common.table.action')
+    tbody
+      =render :partial => 'hairstyle', :collection => @hairstyles
+='link_to(t('.new_hairstyle'),new_hairstyle_collection_hairstyle_path, class: "btn btn-primary")
+=link_to(t('.hairstyle_collections_btn'),:back, class: "btn")

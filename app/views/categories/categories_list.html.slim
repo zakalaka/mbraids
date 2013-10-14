@@ -1,9 +1,14 @@
-h2
-  = t("this is a categories list")
-table.item_list
-  tr
-    th name
-    th description
-    th action
-  =render :partial => 'category', :collection => @categories
-=link_to(t('.new_category'),new_category_path)
+.page-header
+  h2=t('.collections')
+  small
+    =t('.sub_header')
+    =render partial: "show_info_message"
+table.table(class="table-striped")
+  thead
+    tr
+      th=t('common.table.name')
+      th=t('common.table.description')
+      th=t('common.table.action')
+  tbody
+    =render :partial => 'category', :collection => @categories
+='link_to(t('.new_category'),new_category_path, class: "btn btn-primary")

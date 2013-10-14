@@ -1,9 +1,15 @@
-h2
-  = t("#{@h2_header_prefix} this is a collection list")
-table.item_list
-  tr
-    th name
-    th description
-    th action
-  =render :partial => 'hairstyle_collection', :collection => @hairstyle_collections
-=link_to(t('.new_collection'),new_hairstyle_collection_path)
+.page-header
+  h2=t('.header')
+  small
+    =t('.sub_header')
+    =render partial: "show_info_message"
+table.table(class="table-striped")
+  thead
+    tr
+      th=t('common.table.name')
+      th=t('common.table.description')
+      th=t('common.table.action')
+  tbody
+    =render :partial => 'hairstyle_collection', :collection => @hairstyle_collections
+='link_to(t('.new_collection'),new_hairstyle_collection_path, class: "btn btn-primary")
+=link_to(t('.collections_btn'),hairstyle_collections_path, class: "btn")

@@ -1,10 +1,26 @@
-= form_for @hairstyle_collection, :builder => StandardFormBuilder do |f|
-  = f.text_field :name
-  = f.text_area :description
-  = f.select(:collection_type, [%w(Ladies L),%w(Girls G)])
-  /= f.collection_select(:user_id, HairstyleCollection.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
-  - cache do
-    .actions
-      = f.submit t('common.form.save')
-      = link_to(t('common.form.cancel'),:back)
+= form_for @hairstyle_collection, html: {class: "form-horizontal"} do |f|
+  fieldset
 
+    legend =t("." + "#{action_name}" + "_collection")
+    =render(partial: 'show_error_message', locals: {obj: @hairstyle_collection})
+    div.control-group(class="#{field_has_error?(@hairstyle_collection, :name) ? "error" : ""}")
+      =f.label :name, t('common.form.name'), class: "control-label"
+      .controls
+        = f.text_field :name, {placeholder: t("common.form.name"), class: "text_field input-medium"}
+        - if field_has_error?(@hairstyle_collection, :name)
+          span.help-inline=get_field_error(@hairstyle_collection, :name)
+    div.control-group(class="#{field_has_error?(@hairstyle_collection, :description) ? "error" : ""}")
+      =f.label :description, t('common.form.description'), class: "control-label"
+      .controls
+        = f.text_field :description, {placeholder: t("common.form.description"), class: "text_field input-medium"}
+        - if field_has_error?(@hairstyle_collection, :description)
+          span.help-inline=get_field_error(@hairstyle_collection, :description)
+    div.control-group(class="#{field_has_error?(@hairstyle_collection, :collection_type) ? "error" : ""}")
+      =f.label :collection_type, t('common.form.collection_type'), class: "control-label"
+      .controls
+        = f.select :collection_type, [%w(Ladies L),%w(Girls G)]
+        - if field_has_error?(@hairstyle_collection, :collection_type)
+          span.help-inline=get_field_error(@hairstyle_collection, :collection_type)
+    .form-actions
+      ='f.submit t('common.form.save'), {class: "btn btn-primary"}
+      =link_to(t('common.form.cancel'), :back, {class: "btn"})

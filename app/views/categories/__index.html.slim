@@ -2,7 +2,7 @@ h2 Listing categories
 table
   tr
     th Name
-    th Description
+    th Destion
     th
     th
     th
@@ -17,4 +17,21 @@ table
 
 br
 
-= link_to 'New Category', new_category_path
+.page-header
+  h2=t('.header', in: @category.name)
+  small
+    =t('.sub_header')
+    =render partial: "show_info_message"
+table.table(class="table-striped")
+  thead
+    tr
+      th=t('common.table.name')
+      th=t('common.table.image')
+      th=t('common.table.price')
+      th=t('common.table.description')
+      th=t('common.table.action')
+  tbody
+    =render :partial => 'accessory', :collection => @accessories
+='link_to(t('.new_accessory'),new_category_accessory_path, class: "btn btn-primary")
+=link_to(t('.categories_btn'),categories_path, class: "btn")
+

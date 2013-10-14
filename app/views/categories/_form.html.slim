@@ -1,20 +1,20 @@
-= form_for @category, {class: "form-horizontal"} do |f|
-  - if @category.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-      ul
-        - @category.errors.full_messages.each do |message|
-          li = message
+= form_for @category, html: {class: "form-horizontal"} do |f|
   fieldset
-    legend=t('.new_category')
-    .control-group
-      label.control-label(for="inputName")=t('common.form.name')
+
+    legend =t("." + "#{action_name}" + "_category")
+    =render(partial: 'show_error_message', locals: {obj: @category})
+    div.control-group(class="#{field_has_error?(@category, :name) ? "error" : ""}")
+      =f.label :name, t('common.form.name'), class: "control-label"
       .controls
-        = f.text_field :name, {placeholder: t("common.form.name"), class: "span2"}
-    .control-group
-      label.control-label(for="inputDescription")=t('common.form.description')
+        = f.text_field :name, {placeholder: t("common.form.name"), class: "text_field input-medium"}
+        - if field_has_error?(@category, :name)
+          span.help-inline=get_field_error(@category, :name)
+    div.control-group(class="#{field_has_error?(@category, :description) ? "error" : ""}")
+      =f.label :description, t('common.form.description'), class: "control-label"
       .controls
-        = f.text_field :name, {placeholder: t("common.form.description"), class: "span2"}
+        = f.text_field :description, {placeholder: t("common.form.description"), class: "text_field input-medium"}
+        - if field_has_error?(@category, :description)
+          span.help-inline=get_field_error(@category, :description)
     .form-actions
       ='f.submit t('common.form.save'), {class: "btn btn-primary"}
-      =button_to(t('common.form.cancel'), :back, {class: "btn", form_class: "form-inline"})
+      =link_to(t('common.form.cancel'), :back, {class: "btn"})

@@ -1,12 +1,38 @@
-= form_for([@hairstyle_collection, @hairstyle], :builder => StandardFormBuilder) do |f|
-  = f.text_field :name
-  = f.text_area :description
-  = f.text_field :price
-  = f.check_box :displayable_flag, :label => 'display'
-  = f.file_field :image
-  /= f.collection_select(:user_id, HairstyleCollection.all, :id, :name, {:include_blank => true}, {:id => 'combobox'})
-  - cache do
-    .actions
-      = f.submit t('common.form.save')
-      = link_to(t('common.form.cancel'),:back)
-
+= form_for [@hairstyle_collection, @hairstyle], html: {class: "form-horizontal"} do |f|
+  fieldset
+    legend =t("." + "#{action_name}" + "_hairstyle")
+    =render(partial: 'show_error_message', locals: {obj: @hairstyle})
+    div.control-group(class="#{field_has_error?(@hairstyle, :name) ? "error" : ""}")
+      =f.label :name, t('common.form.name'), class: "control-label"
+      .controls
+        = f.text_field :name, {placeholder: t("common.form.name"), class: "text_field input-medium"}
+        - if field_has_error?(@hairstyle, :name)
+          span.help-inline=get_field_error(@hairstyle, :name)
+    div.control-group(class="#{field_has_error?(@hairstyle, :description) ? "error" : ""}")
+      =f.label :description, t('common.form.description'), class: "control-label"
+      .controls
+        = f.text_field :description, {placeholder: t("common.form.description"), class: "text_field input-medium"}
+        - if field_has_error?(@hairstyle, :description)
+          span.help-inline=get_field_error(@hairstyle, :description)
+    div.control-group(class="#{field_has_error?(@hairstyle, :price) ? "error" : ""}")
+      =f.label :price, t('common.form.price'), class: "control-label"
+      .controls
+        .input-prepend
+          span.add-on=t('common.form.currency_symbol')
+          = f.text_field :price, {placeholder: t("common.form.price"), class: "span2 text_field input-small"}
+        - if field_has_error?(@hairstyle, :price)
+          span.help-inline=get_field_error(@hairstyle, :price)
+    div.control-group(class="#{field_has_error?(@hairstyle, :displayable_flag) ? "error" : ""}")
+      =f.label :displayable_flag, t('common.form.displayable_flag'), class: "control-label"
+      .controls
+        .make-switch(tabindex="0")
+          = f.check_box :displayable_flag
+    div.control-group(class="#{field_has_error?(@hairstyle, :image) ? "error" : ""}")
+      =f.label :image_file, t('common.form.image'), class: "control-label"
+      .controls
+        = f.file_field :image_file
+        - if field_has_error?(@hairstyle, :image)
+          span.help-inline=get_field_error(@hairstyle, :image)
+    .form-actions
+      ='f.submit t('common.form.save'), {class: "btn btn-primary"}
+      =link_to(t('common.form.cancel'), :back, {class: "btn"})

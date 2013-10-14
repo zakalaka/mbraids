@@ -4,14 +4,14 @@ html
     title=t('.title')
     /link(href="/assets/bootstrap.min.css" rel="stylesheet" media="screen" )
     = stylesheet_link_tag "application", :media => "all"
-    /= javascript_include_tag "application"
+    = javascript_include_tag "application"
     = csrf_meta_tags
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
   body
     div(class='navbar navbar-fixed-top')
       .navbar-inner
         .container
-          a(class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse")
+          button(class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" type="button")
             span.icon-bar
             span.icon-bar
             span.icon-bar
@@ -26,59 +26,22 @@ html
 
 
             ul.nav
-              li.dropdown
+              li.dropdown(class="#{activate_option("portfolio", controller_name)}")
                 =link_to("#{t('.portfolio')}<b class='caret'></b>".html_safe, portfolio_path, {class: "dropdown-toggle\" data-toggle=\"dropdown".html_safe})
                 ul.dropdown-menu
                   li=link_to(t('.ladies'), ladies_path)
                   li=link_to(t('.girls'), girls_path)
-              li= link_to(t('.accessories'), accessories_path)
-              li= link_to(t('.quote_box'), quote_box_path)
-              li= link_to(t('.appointments'), appointments_path)
-              li= link_to(t('.orders'), orders_path)
-      .container
-        ==yield
-      /#header
-      /  - if user_signed_in?
-      /    p#authorization
-      /      =' t('.signed_in_as', :user => current_user.email)
-      /  #logo
-      /    h1 Hi there
-      /    p hehe we go
-      /#menu
-      /  ul
-      /    li
-      /      =link_to(t('.portfolio'), portfolio_path, {:class => 'selected'})
-      /      ul
-      /        li
-      /          =link_to(t('.ladies'), ladies_path)
-      /        li
-      /          =link_to(t('.girls'), girls_path)
-      /        li
-      /    li
-      /      =link_to(t('.accessories'), accessories_path)
-      /    li
-      /      =link_to(t('.quote_box'), quote_box_path)
-      /    li
-      /      =link_to(t('.appointments'), appointments_path)
-      /    li
-      /      =link_to(t('.orders'), orders_path)
-      /    li
-      /      - if user_signed_in?
-      /        =link_to(t('.sign_out'), destroy_user_session_path, :method => :delete)
-      /      - else
-      /        =' link_to(t('.sign_in'), new_user_session_path)
-      /  .clear
-      /#main
-      /  #content
-      /    =render("layouts/application_message_wrapper")
-      /    ==yield
-      /  #side
-      /    | side content is here
-      /  .clear
-      /#footer
-      /  | &copy; amazing
-        =debug(session)
-        =debug(current_user)
-        =debug(params)
+              li(class="#{activate_option("accessories", controller_name)}")= link_to(t('.accessories'), accessories_path)
+              li(class="#{activate_option("quote_box", controller_name)}")= link_to(t('.quote_box'), quote_box_path)
+              li(class="#{activate_option("appointments", controller_name)}")= link_to(t('.appointments'), appointments_path)
+              li(class="#{activate_option("orders", controller_name)}")= link_to(t('.orders'), orders_path)
+    .container
+      ==yield
+      hr
+      .footer
+          p &copy; Company 2013 #{controller_name}
+          /=debug(session)
+          /=debug(current_user)
+          /=debug(params)
     script(src="http://code.jquery.com/jquery.js")
     =javascript_include_tag "bootstrap.min.js"

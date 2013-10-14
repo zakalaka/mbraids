@@ -8,6 +8,7 @@ authorization do
     includes :guest
     has_permission_on :accounts, :to => [:index, :new, :create, :edit, :update, :destroy]
     has_permission_on :hairstyles, :to => [:index, :new, :create, :edit, :update, :destroy]
+    has_permission_on :categories, :to => [:index, :new, :create, :edit, :update, :destroy]
     has_permission_on :appointments, :to => [:index, :new, :create]
   end
 end

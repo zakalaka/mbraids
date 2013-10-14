@@ -1,4 +1,7 @@
 ru:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   MBraids: "МарининыКосы"
   layouts:
     application:
@@ -19,9 +22,16 @@ ru:
         description: "описание"
         cancel: "отменить"
         save: "сохранить"
+      add_to_cart: "добавить в заказ"
   hairstyles:
     form_wrapper:
       saving_form_data_error: "Ошибка в заполнении формы"
+  accessories:
+    index:
+      categories_btn: "вернуться к каталогу"
+      header: "Аксессуары в %{in}"
+      sub_header: "всякое разное"
+      new_accessory: "добавить аксессуар"
   editing_account: "Редактировать запись"
   quote_boxes:
     show:

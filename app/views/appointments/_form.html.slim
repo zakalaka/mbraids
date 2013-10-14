@@ -1,8 +1,18 @@
-= form_tag(quote_box_line_items_path) do
-  = label_tag(:appointment_to_book)
-  = select_tag(:appointment_id, options_for_select(@appointments), :include_blank => true, :id => 'combobox')
-  - cache do
-    .actions
-      = submit_tag t('.book')
-      /=button_to(t('.add_to_quote_box'), line_items_path(appointment_id: app))
-      = link_to(t('.new appointment'),new_appointment_path) if permitted_to? :create, @appointment
+= form_tag(quote_box_line_items_path, {class: "form-horizontal"})
+fieldset
+  legend =t("." + "#{action_name}" + "_appointment")
+  =render(partial: 'show_error_message', locals: {obj: @appointment})
+  div.control-group(class="#{field_has_error?(@appointment, :description) ? "error" : ""}")
+    =label_tag :appointment, t('common.form.appointment'), class: "control-label"
+    .controls
+      = select_tag(:appointment_id, options_for_select(@appointments), :include_blank => true, class: 'span2')
+      - if field_has_error?(@appointment, :description)
+        span.help-inline=get_field_error(@appointment, :description)
+  .form-actions
+    -if @appointments.size > 0
+      ='submit_tag t('common.form.book'), {class: "btn btn-primary"}
+    -else
+      ='submit_tag t('common.form.book'), {class: "btn btn-primary", disabled: true}
+    ='link_to(t('common.form.cancel'), :back, {class: "btn"})
+    =link_to(t('.commn.form.new'),new_appointment_path, {class: "btn"}) if permitted_to? :create, @appointment
+</form>

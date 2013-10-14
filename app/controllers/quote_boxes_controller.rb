@@ -19,6 +19,8 @@ class QuoteBoxesController < ApplicationController
     @accessories = []
     @appointments = []
 
+    @accessories_2 = Accessory.paginate(page: params[:page], per_page: 2)
+
     if @quote_box
       @quote_box.line_items.each do |line_item|
         @hairstyles << [Hairstyle.find(line_item.quotable_id),line_item.id] if line_item.quotable_type == "Hairstyle"

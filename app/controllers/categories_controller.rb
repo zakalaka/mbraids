@@ -75,11 +75,11 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     #TODO: see if this child deletion can be done better
     @category.accessories.each do |accessory|
-      begin
+      #begin
         File.delete(Rails.root.join('app','assets','uploads',accessory.image))
-      rescue
+      #rescue
 
-      end
+      #end
       accessory.destroy
     end
     @category.destroy

@@ -1,8 +1,9 @@
 tr
   td= hairstyle.name
-  td= link_to(image_tag("#{hairstyle.image}"), hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle))
+  td= link_to(image._tag("#{hairstyle.image}"), hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle))
+  td= number_to_currency(hairstyle.price)
+  td= hairstyle.description
   td
-    span=link_to(t('.edit'), edit_hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle))
-    '
-    span=link_to(t('.destroy'), hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle), :confirm => 'Are you sure?', :method => :delete)
-    span=button_to(t('.add_to_quote_box'), quote_box_line_items_path(hairstyle_id: hairstyle))
+    span='link_to(t('.edit'), edit_hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle), {class: "btn"})
+    span='link_to(t('.destroy'), hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger")
+    span=link_to(t('common.add_to_cart'), quote_box_line_items_path(hairstyle_id: hairstyle), method: :post, class: "btn")

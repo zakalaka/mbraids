@@ -28,6 +28,8 @@ class HairstyleCollectionsController < ApplicationController
   def create
     @hairstyle_collection = HairstyleCollection.new(params[:hairstyle_collection])
 
+    logger.debug(@hairstyle_collection.inspect)
+
     respond_to do |format|
       if @hairstyle_collection.save
         format.html {redirect_to hairstyle_collections_path, notice: '.create_hairstyle_collection_successful'}

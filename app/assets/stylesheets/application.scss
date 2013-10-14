@@ -1,5 +1,35 @@
 @import "bootstrap.min.css";
 //body {
-//  padding-top: 60px;
+//  padding-top: 40px;
 //}
 @import "bootstrap-responsive.min.css";
+@import "docs.css";
+// Carousel base class
+//.carousel {
+//}
+.carousel-control {
+  font-size: 120px;
+  height: 80px;
+  margin-top: 0;
+  font-size: 120px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  background-color: transparent;
+  border: 0;
+  z-index: 10;
+}
+.row {
+  margin-bottom: 15px;
+}
+
+//.carousel {
+//  .item {
+//    height: 500px;
+//  }
+//  img  {
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    min-width: 100%;
+//    height: 500px;
+//  }
+//}

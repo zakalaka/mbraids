@@ -28,14 +28,16 @@ group :assets do
   #gem "twitter-bootstrap-rails"
 end
 
-#gem 'jquery-rails'
 #TODO
 #added new gems here
+gem 'jquery-rails'
 gem 'devise', "2.1.3"
 gem 'omniauth'
 gem 'omniauth-openid'
 gem 'declarative_authorization'  #v 0.5.5
 gem "galetahub-simple_captcha", :require => "simple_captcha.rb"
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 #gem 'mongrfel', '1.2.0.pre2'
 #gem 'thin'
 # To use ActiveModel has_secure_password

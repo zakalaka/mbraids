@@ -1,9 +1,35 @@
-h2=t('.all_hairstyles')
-table.item_list
-  tr
-    th name
-    th image
-    th action
-  =render :partial => 'hairstyle', :collection => @hairstyles
-=link_to(t('.new_hairstyle'),new_hairstyle_collection_hairstyle_path)
+.page-header
+  h2=t('.all_hairstyles')
+  small
+    =t('.sub_header')
+    =render partial: "show_info_message"
+/table.table(class="table-striped")
+/  thead
+/    tr
+/      th=t('common.table.name')
+/      th=t('common.table.image')
+/      th=t('common.table.price')
+/      th=t('common.table.description')
+/      th=t('common.table.action')
+/  tbody
+/    =render :partial => 'hairstyle', :collection => @hairstyles
+/='link_to(t('.new_hairstyle'),new_hairstyle_collection_hairstyle_path, class: "btn btn-primary")
+/=link_to(t('.hairstyle_collections_btn'),:back, class: "btn")
+.row
+  .thumbnails
+  - @hairstyles.each do |hairstyle|
+    .span2
+      .thumbnail
+        =link_to(image_tag(hairstyle.image, {class: "img-rounded", alt: "mbraids"}), hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle))
+        .caption
+          h4=hairstyle.name
+          p=truncate(hairstyle.description,length: 10)
+          p
+            span='link_to(t('.edit'), edit_hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle), {class: "btn btn-small"})
+            span='link_to(t('.destroy'), hairstyle_collection_hairstyle_path(@hairstyle_collection,hairstyle), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-small btn-danger")
+            span=link_to(t('common.add_to_cart'), quote_box_line_items_path(hairstyle_id: hairstyle), method: :post, class: "btn")
+=will_paginate(@hairstyles, {class: "pagination pagination-right", renderer: BootstrapPagination::Rails})
+='link_to(t('.new_hairstyle'),new_hairstyle_collection_hairstyle_path, class: "btn btn-primary")
+
+
 

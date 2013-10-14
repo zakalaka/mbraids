@@ -1,8 +1,12 @@
 tr
   //there was a problem with not passing the hairstyle_collection parameter here - spend a few hours on this
-  td= link_to("#{hairstyle_collection.name}",hairstyle_collection_hairstyles_path(hairstyle_collection))
+  td= link_to(hairstyle_collection.name, hairstyle_collection_hairstyles_path(hairstyle_collection), {class: "btn"})
   td= hairstyle_collection.description
   td
-    span=link_to(t('.edit'), edit_hairstyle_collection_path(hairstyle_collection))
-    '
-    span=link_to(t('.destroy'), hairstyle_collection, :confirm => 'Are you sure?', :method => :delete)
+    span='link_to(t('.edit'), edit_hairstyle_collection_path(hairstyle_collection), {class: "btn"})
+    span='link_to(t('.destroy'), hairstyle_collection, :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger")
+
+
+
+
+
